@@ -1,0 +1,25 @@
+=== Pruebas del bot de Instagram (webhook /api/instagram con servidores simulados de Meta y Gemini) ===
+Ejecutado: 2026-10-12 23:23
+PASS  GET con token correcto devuelve el challenge
+PASS  GET con token incorrecto → 403
+PASS  POST sin firma → 403
+PASS  POST con firma falsa → 403
+PASS  mensajes con firma inválida no llegan a Gemini ni a Instagram
+PASS  POST firmado → 200 inmediato
+PASS  el bot llamó a Gemini con la regla de Instagram y enlaces completos
+PASS  respondió al usuario correcto con el token de acceso
+PASS  mismo mensaje reenviado por Meta no se responde dos veces
+PASS  segundo mensaje incluye el historial (3 turnos)
+PASS  ecos y mensajes de la propia cuenta se ignoran (sin bucles)
+PASS  mensaje sin texto: avisa que solo lee texto
+PASS  segundo adjunto seguido no repite el aviso
+PASS  si Gemini falla, responde derivando a WhatsApp
+PASS  respuesta larga se recorta a ≤ 1000 bytes
+PASS  si el primer intento no responde, reintenta y contesta normal
+PASS  …y lo hace dentro de unos segundos (no espera al plazo)
+PASS  si Gemini nunca responde, igual contesta (mensaje de respaldo con WhatsApp)
+PASS  …antes de agotar el plazo de la función
+PASS  máximo 20 respuestas por hora por usuario
+PASS  payload de otro tipo se acepta pero se ignora
+
+21 pasaron, 0 fallaron

@@ -1,0 +1,68 @@
+=== Pruebas de base de datos (migraciones 0001-0005 en PostgreSQL local) ===
+Ejecutado: 2026-10-12 23:23
+PASS  migración 0001_init.sql aplica
+PASS  migración 0002_order_emails.sql aplica
+PASS  migración 0003_order_tracking.sql aplica
+PASS  migración 0004_stock_cupones_envio_documentos.sql aplica
+PASS  migración 0005_push_notifications.sql aplica
+PASS  0004 es repetible
+PASS  RUT 12.345.678-5 válido
+PASS  RUT 12.345.678-9 inválido
+PASS  RUT 6-K válido (dígito K)
+PASS  RUT 11.111.111-1 válido
+PASS  RUT vacío inválido
+PASS  quote RM: envío $3.500
+PASS  quote Biobío: envío por coordinar
+PASS  pedido 2×Blanca: subtotal 22.000, envío 3.500, total 25.500
+PASS  stock producto 5→3 y variante 2→0
+PASS  variante sin stock rechaza el pedido
+PASS  pedido rechazado no descuenta nada (rollback)
+PASS  variante sin límite (null) solo descuenta el producto
+PASS  cancelar pedido repone producto (+2) y variante (+2)
+PASS  cancelar dos veces no repone doble
+PASS  reabrir pedido vuelve a descontar
+PASS  reabrir sin stock suficiente falla
+PASS  cupón 10% sobre 20.000 = −2.000 (insensible a mayúsculas)
+PASS  cupón bajo compra mínima se rechaza con mensaje
+PASS  cupón vencido se rechaza
+PASS  cupón inexistente se rechaza
+PASS  pedido con PROMO10: subtotal 20.000, desc 2.000, total 21.500
+PASS  cupón con max_uses=1 no se puede usar dos veces
+PASS  usos del cupón = 1
+PASS  cancelar el pedido devuelve el uso del cupón
+PASS  cupón fijo −2.000 sobre 10.000
+PASS  sobre el mínimo el envío es $0
+PASS  bajo el mínimo se cobra envío
+PASS  envío gratis se evalúa DESPUÉS del descuento (18.000 < 20.000)
+PASS  región sin tarifa: envío 0 y marcado por coordinar
+PASS  shipping_pending se guarda en el pedido (RM=false, Biobío=true)
+PASS  factura con RUT inválido se rechaza
+PASS  factura sin razón social se rechaza
+PASS  factura válida guarda datos
+PASS  tipo de documento inválido se rechaza
+PASS  4.º pedido pendiente del mismo email se rechaza
+PASS  el límite ignora mayúsculas del email
+PASS  pedido pendiente sin pago >48 h se cancela solo
+PASS  y devuelve su stock (+1 de o8, −1 del pedido nuevo → neto 0)
+PASS  un pedido ya pagado NO expira
+PASS  track_order con email ajeno → null
+PASS  track_order correcto devuelve totales sin datos de contacto
+PASS  claim_order_email trae descuento, envío y cupón
+PASS  claim_order_email solo entrega una vez
+PASS  anon no puede leer cupones
+PASS  anon puede leer tarifas de envío
+PASS  anon puede leer settings
+PASS  anon no puede leer pedidos
+PASS  anon no puede cambiar tarifas
+PASS  admin sí lee cupones
+PASS  admin sí edita tarifas
+PASS  admin registra su suscripción push
+PASS  admin no puede registrar suscripción a nombre de otro
+PASS  un usuario que no es admin no ve suscripciones
+PASS  anon no lee suscripciones directamente
+PASS  claim_order_push entrega pedido + suscripciones
+PASS  claim_order_push solo entrega una vez
+PASS  claim_order_push no sirve para pedidos de más de 15 min
+PASS  drop_push_endpoint elimina la suscripción muerta
+
+64 pasaron, 0 fallaron

@@ -5,6 +5,7 @@
 **Repositorio del código (equipo):** https://github.com/minerva-capstone-team/minerva-capstone
 **Período cubierto:** 30 de septiembre al 7 de octubre de 2026
 **Estado del documento:** redactado con asistencia de IA (ver sección 6); el autor debe revisarlo antes de entregarlo.
+**Versión en Word:** [`GUTIERREZ_DIEGO_Ficha_Avance_Fase2_Minerva.docx`](GUTIERREZ_DIEGO_Ficha_Avance_Fase2_Minerva.docx) (mismo contenido, con las capturas incrustadas).
 
 ---
 
